@@ -1,8 +1,5 @@
-const 함수 = function () {
-    console.log('함수 내부의 코드');
+function isLeapYear(y) {
+    return (y % 4 === 0) && (y % 100 !== 0) || (y % 400 === 0);
 }
 
-함수();
-
-console.log(typeof 함수);
-console.log(함수);
+console.log(`2020년은 윤년일까? ${isLeapYear(2020)}`);
