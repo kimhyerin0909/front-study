@@ -1,0 +1,49 @@
+slack clone
+
+세팅
+
+node_module : 설치한 패키지들의 코드들이 있음 -> 용량이 많아서 github에 안 올림
+
+eslint, prettier 설치
+eslint : 코드 검사 도구
+npm i -D eslint
+
+prettier
+: 코드를 자동으로 정렬해주는 도구
+npm i -D prettier eslint-plugin-prettier eslint-config-prettier
+
+. 이 붙은 파일들은 대개 설정 파일임.
+
+.prettierrc, .eslintrc 파일 생성
+
+.prettierrc
+{
+    "printWidth": 120,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "semi": true
+}
+-> tab을 스페이스바 두번, 쌍따옴표가 아닌 홑따옴표를 쓰고, 항상 콤마를 객체 등 코드 뒤에 붙이고, 세미콜론도 항상 붙인다.
+
+.eslintrc
+{
+    "extends":["plugin:prettier/recommendded"]
+}
+-> 프리티어가 추천하는대로 따르겠다.
+
+tsconfig.json 파일 생성 후 github에서 복붙
+
+
+ts를 js로 변환할 때 방법
+1. 그냥 ts가 변환하는 것 그대로 쓴다.
+2. ts를 바벨이 변환한다.
+
+바벨
+: 이미지나 html, css 이런 것들이 있을 때 많이 씀
+
+* strict는 무조건 true -> false라면 any 타입을 막 쓰게 됨
+
+바벨 설정
+webpack.config.ts 파일 생성
+-> github 복붙
