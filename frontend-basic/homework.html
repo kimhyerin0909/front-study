@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수치 계산기 과제</title>
+</head>
+<body>
+    <h1>수치 계산기</h1>
+    <input type="text" id="input">
+    <br>
+    <button onclick="unit1Add('cm')">cm</button>
+    <button onclick="unit1Add('m')">m</button>
+    <button onclick="unit1Add('inch')">inch</button>
+    <button onclick="unit1Add('yard')">yard</button>
+    <p>변환</p>
+    <button onclick="unit2Add('cm')">cm</button>
+    <button onclick="unit2Add('m')">m</button>
+    <button onclick="unit2Add('inch')">inch</button>
+    <button onclick="unit2Add('yard')">yard</button>
+    <br>
+    <button onclick="changeUnit()">변환값</button>
+    <p id="result"></p>
+    <script src="./hw.js"></script>
+</body>
+</html>
