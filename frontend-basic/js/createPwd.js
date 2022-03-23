@@ -17,5 +17,12 @@ let password = [];
 let newPwd = 16;
 
 const createPwd = () => {
-    console.log(set.captial);
+    if(password.length >= 16) {
+        return 0;
+    }
+    for(let i = 0; i < 16; i++) {
+        let index = Math.floor(Math.random() * 26);
+        password.push(set.captial[index]);
+    }
+    console.log(password);
 }
