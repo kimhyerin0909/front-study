@@ -47,3 +47,7 @@ ts를 js로 변환할 때 방법
 바벨 설정
 webpack.config.ts 파일 생성
 -> github 복붙
+
+webpack
+: npx webpack
+전역으로 설치해서 사용할 수도 있는데 요즘은 그렇게 잘 안 씀

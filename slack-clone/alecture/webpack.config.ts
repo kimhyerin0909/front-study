@@ -1,8 +1,8 @@
 import path from 'path';
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+// import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import webpack from 'webpack';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+// import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 const __dirname = path.resolve();
@@ -23,7 +23,7 @@ const config: webpack.Configuration = {
     },
   },
   entry: {
-    app: './client',
+    app: './client', // app2, app3 ... 만들 수 있음
   },
   module: {
     rules: [
@@ -60,40 +60,40 @@ const config: webpack.Configuration = {
     ],
   },
   plugins: [
-    new ForkTsCheckerWebpackPlugin({
-      async: false,
+    // new ForkTsCheckerWebpackPlugin({
+      // async: false,
       // eslint: {
       //   files: "./src/**/*",
       // },
-    }),
+    // }),
     new webpack.EnvironmentPlugin({ NODE_ENV: isDevelopment ? 'development' : 'production' }),
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: '[name].js', // name : client
     publicPath: '/dist/',
   },
-  devServer: {
-    historyApiFallback: true, // react router
-    port: 3090,
-    publicPath: '/dist/',
-    proxy: {
-      '/api/': {
-        target: 'http://localhost:3095',
-        changeOrigin: true,
-      },
-    },
-  },
+  // devServer: {
+  //   historyApiFallback: true, // react router
+  //   port: 3090,
+  //   publicPath: '/dist/',
+  //   proxy: {
+  //     '/api/': {
+  //       target: 'http://localhost:3095',
+  //       changeOrigin: true,
+  //     },
+  //   },
+  // },
 };
 
-if (isDevelopment && config.plugins) {
-  config.plugins.push(new webpack.HotModuleReplacementPlugin());
-  config.plugins.push(new ReactRefreshWebpackPlugin());
-  config.plugins.push(new BundleAnalyzerPlugin({ analyzerMode: 'server', openAnalyzer: true }));
+if (isDevelopment && config.plugins) { // 개발환경일 때 쓸 플러그인
+  // config.plugins.push(new webpack.HotModuleReplacementPlugin());
+  // config.plugins.push(new ReactRefreshWebpackPlugin());
+  // config.plugins.push(new BundleAnalyzerPlugin({ analyzerMode: 'server', openAnalyzer: true }));
 }
-if (!isDevelopment && config.plugins) {
-  config.plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
-  config.plugins.push(new BundleAnalyzerPlugin({ analyzerMode: 'static' }));
+if (!isDevelopment && config.plugins) { // 개발환경이 아닐 때 쓸 플러그인
+  // config.plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
+  // config.plugins.push(new BundleAnalyzerPlugin({ analyzerMode: 'static' }));
 }
 
 export default config;
