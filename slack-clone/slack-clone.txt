@@ -51,3 +51,9 @@ webpack.config.ts 파일 생성
 webpack
 : npx webpack
 전역으로 설치해서 사용할 수도 있는데 요즘은 그렇게 잘 안 씀
+
+
+package.json -> scripts -> build -> cross-env
+: TS_NODE_PROJECT가 linux 환경에서만 실행되어서 쓰는 거
+ 
+알아서 새로고침 : 핫리로딩
