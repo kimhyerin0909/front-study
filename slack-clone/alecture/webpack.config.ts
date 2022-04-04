@@ -5,7 +5,7 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 // import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 
 const config: webpack.Configuration = {
   name: 'slack-clone',
@@ -71,14 +71,12 @@ const config: webpack.Configuration = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js', // name : client
-    
-    // publicPath: '/dist/',
+    publicPath: '/dist/',
   },
   devServer: {
     historyApiFallback: true, // react router
     port: 3090,
-    
-    // publicPath: '/dist/',
+    publicPath: '/dist/',
     // proxy: {
     //   '/api/': {
     //     target: 'http://localhost:3095',
