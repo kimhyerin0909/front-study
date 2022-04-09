@@ -1,16 +1,20 @@
 import path from 'path';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
-import webpack from 'webpack';
+import webpack, { Configuration as WebpackConfiguration } from "webpack";
+import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
+
+interface Configuration extends WebpackConfiguration {
+  devServer?: WebpackDevServerConfiguration;
+}
+
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
-// const __dirname = path.resolve();
 
-const config: webpack.Configuration = {
-  name: 'slack-clone',
+const config: Configuration = {
+  name: 'sleact',
   mode: isDevelopment ? 'development' : 'production',
-  devtool: !isDevelopment ? 'hidden-source-map' : 'eval',
+  devtool: isDevelopment ? 'hidden-source-map' : 'inline-source-map',
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: {
@@ -23,7 +27,7 @@ const config: webpack.Configuration = {
     },
   },
   entry: {
-    app: './client', // app2, app3 ... 만들 수 있음
+    app: './client',
   },
   module: {
     rules: [
@@ -35,7 +39,7 @@ const config: webpack.Configuration = {
             [
               '@babel/preset-env',
               {
-                targets: { browsers: ['last 2 chrome versions'] },
+                targets: { browsers: ['IE 10'] },
                 debug: isDevelopment,
               },
             ],
@@ -44,10 +48,7 @@ const config: webpack.Configuration = {
           ],
           env: {
             development: {
-              plugins: [['@emotion', { sourceMap: true }], require.resolve('react-refresh/babel')],
-            },
-            production: {
-              plugins: ['@emotion'],
+              plugins: [require.resolve('react-refresh/babel')],
             },
           },
         },
@@ -70,30 +71,26 @@ const config: webpack.Configuration = {
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].js', // name : client
+    filename: '[name].js',
     publicPath: '/dist/',
   },
   devServer: {
-    historyApiFallback: true, // react router
+    historyApiFallback: true,
     port: 3090,
-    publicPath: '/dist/',
-    // proxy: {
-    //   '/api/': {
-    //     target: 'http://localhost:3095',
-    //     changeOrigin: true,
-    //   },
-    // },
+    devMiddleware: { publicPath: '/dist/' },
+    static: { directory: path.resolve(__dirname) },
   },
 };
 
-if (isDevelopment && config.plugins) { // 개발환경일 때 쓸 플러그인
+if (isDevelopment && config.plugins) {
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
-  config.plugins.push(new ReactRefreshWebpackPlugin());
-  // config.plugins.push(new BundleAnalyzerPlugin({ analyzerMode: 'server', openAnalyzer: true }));
+  config.plugins.push(new ReactRefreshWebpackPlugin({
+    overlay: {
+      useURLPolyfill: true
+    }
+  }));
 }
-if (!isDevelopment && config.plugins) { // 개발환경이 아닐 때 쓸 플러그인
-  // config.plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
-  // config.plugins.push(new BundleAnalyzerPlugin({ analyzerMode: 'static' }));
+if (!isDevelopment && config.plugins) {
 }
 
 export default config;

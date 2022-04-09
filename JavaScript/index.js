@@ -1,2 +1,5 @@
-let fruits = ["Banana", "Orange", "Apple", "Mango"];
-document.write(fruits.join(" / "));
+function test() {
+    let upload = new Promise((resolve, reject) => {
+        
+    })
+}
