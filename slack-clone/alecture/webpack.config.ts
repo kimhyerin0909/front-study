@@ -48,7 +48,7 @@ const config: Configuration = {
           ],
           env: {
             development: {
-              plugins: [require.resolve('react-refresh/babel')],
+              plugins: [['@emotion', {sourceMap:true}], require.resolve('react-refresh/babel')],
             },
           },
         },
@@ -69,6 +69,11 @@ const config: Configuration = {
     }),
     new webpack.EnvironmentPlugin({ NODE_ENV: isDevelopment ? 'development' : 'production' }),
   ],
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
+},
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',

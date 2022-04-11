@@ -1,0 +1,13 @@
+* {
+    font-family: "THE봉숭아틴트";
+    text-align: center;
+    color: white;
+}
+.content {
+    margin: auto;
+    margin-top: 20px;
+    padding: 10px;
+    width: 35vw;
+    height: 20vw;
+    background: linear-gradient(rgb(75, 141, 203),rgb(249, 252, 255));
+}
