@@ -2,7 +2,8 @@
 
 import useInput from '@hooks/useInput';
 import React, { useCallback, useState } from 'react';
-import {Header, Form, Label, Input, LinkContainer, Button, Error} from './style';
+import {Header, Form, Label, Input, LinkContainer, Button, Error, Success} from './style';
+import axios from 'axios';
 
 const SignUp = () => {
     const [email, onChangeEmail] = useInput('');
@@ -10,6 +11,8 @@ const SignUp = () => {
     const [password, , setPassword] = useInput('');
     const [passwordCheck, , setPasswordCheck] = useInput('');
     const [misMatchError, setMisMatchError] = useState(false);
+    const [signupError, setSignupError] = useState('');
+    const [signUpSuccess, setSignUpSuccess] = useState(false);
 
     // setPassword, setMisMatchError와 같은 외부함수는 한 번 선언되면 안 바뀜 -> 공식 문서에 있음
 
@@ -28,6 +31,24 @@ const SignUp = () => {
       console.log(email, nickname, password, passwordCheck);
       if(!misMatchError) {
         console.log('서버로 회원 가입 하기!');
+        setSignUpSuccess(false); // 요청을 연달아 보낼 때를 방지하기 위해 초기화 해줌
+        setSignupError('');
+        axios.post('/api/users', {
+          email, nickname, password, // 위 주소로 email, nickname, password 데이터 보내기
+        })
+        // 데이터 보내기 성공 시
+        .then((response)=>{
+          console.log(response);
+          setSignUpSuccess(true);
+        })
+        // 데이터 보내기 실패 시
+        .catch((error)=>{
+          console.log(error.response);
+          setSignupError(error.response.data); // 에러가 발생하면 에러메세지 출력
+        })
+        // 성공하든 실패하든 실행
+        .finally(() => {})
+        ;
       } else {
         alert('비밀번호가 일치하지 않습니다.');
       }
@@ -70,8 +91,8 @@ const SignUp = () => {
           </div>
           {misMatchError&& <Error>비밀번호가 일치하지 않습니다.</Error>}
           {!nickname && <Error>닉네임을 입력해주세요.</Error>}
-          {/* {signUpError && <Error>{signUpError}</Error>}
-          {signUpSuccess && <Success>회원가입되었습니다! 로그인해주세요.</Success>} */}
+          {signupError && <Error>{signupError}</Error>}
+          {signUpSuccess && <Success>회원가입되었습니다! 로그인해주세요.</Success>}
         </Label>
         <Button type="submit">회원가입</Button>
       </Form>
