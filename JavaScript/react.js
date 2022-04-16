@@ -1,1 +1,10 @@
-ReactDOM.render(<div><h1>김</h1><h2>혜린</h2></div>, document.getElementById("root"));
+function Page() {
+    return (
+        <div>
+            <h1>HI</h1>
+            <h1>Everyone</h1>
+        </div>
+    )
+}
+
+ReactDOM.render(<Page />, document.getElementById("root"));
