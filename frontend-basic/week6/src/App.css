@@ -1,5 +1,7 @@
 * {
   margin: 0;
+  font-family: 'Inter';
+  font-style: normal;
   padding: 0;
 }
 
@@ -20,4 +22,96 @@
   color: white;
   font-size: 14.46px;
   margin-left: 7px;
+  width: 109px;
+  height: 16px;
+  font-weight: 500;
+  font-size: 14.4608px;
+  line-height: 18px;
+  letter-spacing: -0.075em;
+}
+
+.list1, .list2, .list3 {
+  
+  width: 470px;
+  height: 168px;
+  display: flex;
+  margin-top: 30px;
+}
+
+.content {
+  width: 470px;
+  margin: auto;
+}
+
+.list1 {
+  margin-top: 45px;
+}
+
+.listImg {
+  width: 126px;
+  height: 168px;
+}
+
+.locate {
+  width: 7px;
+  height: 9.55px;
+}
+
+.info {
+  margin-left: 19px;
+}
+
+.cnty {
+  width: 40px;
+  margin-left: 4px;
+  height: 10px;
+  font-weight: 400;
+  font-size: 10.24px;
+  line-height: 12px;
+  color: #2B283A;
+}
+
+a {
+  width: 106px;
+  height: 13px;
+
+  font-weight: 400;
+  font-size: 10.24px;
+  line-height: 12px;
+  margin-left: 12px;
+
+  text-decoration-line: underline;
+  color: #918E9B;
+}
+
+.infoTitle {
+  width: 326px;
+  height: 40px;
+
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 30px;
+
+  color: #2B283A;
+}
+
+.infoDate {
+  width: 319px;
+  height: 11px;
+  font-weight: 700;
+  font-size: 10.24px;
+  line-height: 12px;
+  color: #2B283A;
+  margin-top: 7px;
+}
+
+.infoContent {
+  width: 326px;
+  height: 45px;
+
+  font-weight: 400;
+  font-size: 10.24px;
+  line-height: 150%;
+  color: #2B283A;
+  margin-top: 9px;
 }
