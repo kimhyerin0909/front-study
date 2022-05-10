@@ -1,0 +1,20 @@
+.container {
+    border: 5px solid #ffcc5c;
+    display: flex;
+    flex-direction: row;
+    /* row, column, row-reverse, column-reverse */
+    justify-content: flex-start;
+}
+
+.container > div {
+    flex: 1; 
+    /* 모든 div들이 1 ㄷ 1 ㄷ 1로 갖는것 */
+}
+
+.container > .search {
+    flex: 2;
+}
+
+/* .home {
+    margin-right: auto;
+} */

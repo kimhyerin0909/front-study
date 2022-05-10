@@ -1,0 +1,24 @@
+.container {
+    border: 5px solid #ffcc5c;
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+
+/* .container > div {
+    width: 300px;
+} */
+
+.home {
+    flex : 1 1 200px;
+    /* flex-grow: 1;
+    flex-shrink: 0; */
+    /* flex:  1 1 200px; */
+    /* -> flex-grow:1 / flex-shrink:1 / flex-basis : 200px -> 위에 각 속성은 이걸 뜻함 */
+}
+
+.search {
+    flex: 1 1 200px;
+    order: -1;
+    /* flex-shrink: 2;
+    flex-grow: 1; */
+}

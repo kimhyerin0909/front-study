@@ -1,0 +1,18 @@
+.container {
+    border: 5px solid #ffcc5c;
+    display: flex;
+    height: 500px;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    /* -> 수직 */
+    align-items: center;
+    /* -> 수평 */
+}
+
+.logout {
+    align-self: flex-start;
+}
+
+.home {
+    align-self: flex-end;
+}
