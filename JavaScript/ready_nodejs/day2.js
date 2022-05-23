@@ -6,4 +6,3 @@ let str = "Hello World! world!";
 const re = /World/i;
 console.log(re.test(str));
 console.log(str.search(re));
-
